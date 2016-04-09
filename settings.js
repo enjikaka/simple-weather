@@ -1,8 +1,4 @@
-/* globals updateColor, updateBadge, $ */
-
-const dqs = (q) => {
-  return document.querySelector(q);
-};
+/* globals chrome, $, dqs */
 
 function fillOutLocation (value) {
   window.localStorage.weatherLocation = value;
@@ -29,9 +25,7 @@ window.onload = function () {
   $('#my_temp').val(window.localStorage.weatherTempVer || 'c');
   $('#my_theme').val(window.localStorage.weatherTheme || '');
 
-  updateColor();
   updateMap();
-  updateBadge();
 };
 
 window.onclick = function (e) {
@@ -39,11 +33,17 @@ window.onclick = function (e) {
     window.localStorage.weatherLocation = $('#my_loc').val();
     window.localStorage.weatherTempVer = $('#my_temp').val() || 'c';
     window.localStorage.weatherTheme = $('#my_theme').val();
+
     updateMap();
-    /* var notification = webkitNotifications.createNotification('http://apps.enji.se/weather/48.png', 'Woho!', 'Your settings are saved.');
-    notification.show(); */
-    updateBadge();
-    updateColor();
+
+    const notificationOptions = {
+      iconUrl: '48.png',
+      type: 'basic',
+      title: 'Simple Weather',
+      message: 'Settings saved.'
+    };
+
+    chrome.notifications.create('swn-settingsSaved', notificationOptions);
   } else if (e.target.id === 'my_map') {
     window.open('http://maps.google.com/maps?f=q&q=' + window.localStorage.weatherLocation);
   } else if (e.target.id === 'opt') {
@@ -52,6 +52,7 @@ window.onclick = function (e) {
     window.localStorage.weatherLocation = '';
     window.localStorage.weatherTempVer = 'c';
     window.localStorage.weatherTheme = '';
+
     document.location.href = 'settings.html';
   }
 };
