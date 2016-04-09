@@ -1,26 +1,9 @@
-/* globals $, chrome */
-/* exported updateBadge, isEmpty, noCity */
+/* globals chrome */
+/* exported updateBadge, isEmpty, noCity, dqs, getIcon */
 
-function updateBadge () {
-  let location = window.localStorage.weatherLocation;
-  if (!location) return;
-
-  location = location.split(',');
-
-  $.ajax({
-    type: 'GET',
-    url: `http://api.met.no/weatherapi/locationforecast/1.9/?lat=${location[0]};lon=${location[1]}`,
-    dataType: 'xml',
-    success: function () {
-      /*$(this).find('location').each(function () {
-        $('#weather').attr('title', $(this).attr('data'));
-        chrome.browserAction.setTitle({title: $(this).attr('data') + ' - ' + city});
-      });*/
-    }
-  });
-
-  setTimeout(updateBadge, 300000);
-}
+const dqs = (q) => {
+  return document.querySelector(q);
+};
 
 function isEmpty (s) {
   if (s == null || s === '') { return true; }
@@ -30,16 +13,26 @@ function isEmpty (s) {
 }
 
 function noCity () {
-  var notification = webkitNotifications.createNotification('http://apps.enji.se/weather/48.png', 'There is a problem...', 'We couldn\'t find the city you entered. Go to the settings page and try to add more information to your location (if you have "City" try "City, Country") or try another location near you.');
-  notification.show();
-}
+  const notificationOptions = {
+    iconUrl: '48.png',
+    type: 'basic',
+    title: 'Simple Weather',
+    message: `We don't kow where you are. Please go to the options page and set your location`,
+    buttons: [
+      {
+        title: 'Open settings'
+      }
+    ]
+  };
 
-function updateColor () {
-  return;
-  var c = window.localStorage.weatherTheme;
-  if (isEmpty(c)) { c = '11115C'; }
-  $('body').css('color', '#' + c);
-  $('*').css('border-color', '#' + c);
+  chrome.notifications.create('swn-noCity', notificationOptions);
+
+  chrome.notifications.onButtonClicked.addListener((notificationId, buttonIndex) => {
+     if (notificationId === 'swn-noCity' && buttonIndex === 0) {
+      window.open('settings.html');
+      chrome.notifications.clear('swn-noCity');
+     }
+  });
 }
 
 function fcap (s) {
@@ -54,7 +47,6 @@ function getIcon (i) {
   switch (i) {
     case 'LightCloud':
     case 'PartlyCloud':
-    case 'LightCloud':
       i = 'H';
       break;
     case 'Cloud':
