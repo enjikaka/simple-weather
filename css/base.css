@@ -1,0 +1,21 @@
+@import 'fonts.css';
+
+body {
+  font-family: 'Sofia Pro Light', Calibri, Arial, sans-serif;
+
+  margin: 0;
+
+  user-select: none;
+
+  color: #11115c;
+  border-color: #11115c;
+}
+
+:hover {
+  cursor: default;
+}
+
+a:hover,
+button:hover {
+  cursor: pointer;
+}

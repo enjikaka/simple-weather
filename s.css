@@ -1,6 +1,0 @@
-﻿body{font-family:'Interstate'}
-#content{width:150px}
-#content #weather{font-family:'Meteocons';font-size:128px;text-align:center;padding-top:8px}
-#content #temp{text-align:center;font-size:42px}
-#content #error{text-align:center;font-size:16px;padding-bottom:8px}
-#content #city{font-size:10px;text-align:center;margin:2px 0;display:none}
