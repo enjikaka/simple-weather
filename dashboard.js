@@ -1,7 +1,7 @@
 /* globals isEmpty, updateColor, updateBadge, ctof, getIcon $ */
 window.onload = function () {
   if (isEmpty(window.localStorage.weatherLocation)) {
-    $('section').html('We have no idea where you are! You haven\'t set a location yet. Go to the <a href="s.html" title="Go to settings">settings page</a> and put it in.');
+    $('section').html('We have no idea where you are! You haven\'t set a location yet. Go to the <a href="settings.html" title="Go to settings">settings page</a> and put it in.');
     return;
   }
 
@@ -12,7 +12,7 @@ window.onload = function () {
 
 window.onclick = function (e) {
   if (e.target.id === 'opt') {
-    document.location.href = 's.html';
+    document.location.href = 'settings.html';
   }
 };
 

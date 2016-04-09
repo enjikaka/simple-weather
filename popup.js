@@ -3,7 +3,7 @@
 window.onload = function () {
   if (isEmpty(window.localStorage.weatherLocation)) {
     window.close();
-    window.open('s.html');
+    window.open('settings.html');
   }
   loadWeather();
   updateColor();
