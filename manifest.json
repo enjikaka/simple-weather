@@ -16,5 +16,5 @@
   "options_page": "s.html",
   "permissions": [ "<all_urls>", "notifications" ],
   "update_url": "http://clients2.google.com/service/update2/crx",
-  "version": "2.0.4"
+  "version": "3.0.0"
 }
