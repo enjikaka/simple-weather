@@ -1,10 +1,11 @@
 /* globals updateColor, updateBadge, isEmpty, ctof, $, getIcon */
 
 window.onload = function () {
-  if (isEmpty(window.localStorage.weatherLocation)) {
-    window.close();
-    window.open('settings.html');
+  if (!window.localStorage.weatherLocation) {
+    noCity();
+    return;
   }
+
   loadWeather();
   updateColor();
   updateBadge();
@@ -15,10 +16,9 @@ window.onclick = function () {
 };
 
 function loadWeather () {
-  var city = window.localStorage.weatherLocation;
-  var tv = window.localStorage.weatherTempVer;
-
+  let tv = window.localStorage.weatherTempVer;
   let location = window.localStorage.weatherLocation;
+
   if (!location) return;
 
   location = location.split(',');
