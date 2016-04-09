@@ -1,0 +1,24 @@
+{
+  "name": "simple-weather",
+  "version": "0.0.1",
+  "description": "Simple Weather browser extension",
+  "scripts": {
+    "css": "./node_modules/.bin/postcss --config postcss.config.json",
+    "test": "semistandard",
+    "start": "node index",
+    "build": "npm run css"
+  },
+  "keywords": [
+    "map"
+  ],
+  "author": "Jeremy Karlsson",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "cssnano": "^3.5.2",
+    "postcss": "^5.0.19",
+    "postcss-cssnext": "^2.5.2",
+    "postcss-cli": "^2.5.1",
+    "postcss-import": "^8.0.2",
+    "postcss-reporter": "^1.3.3"
+  }
+}
