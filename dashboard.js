@@ -1,12 +1,10 @@
 /* globals isEmpty, updateColor, updateBadge, ctof, getIcon $ */
 window.onload = function () {
-  if (isEmpty(window.localStorage.weatherLocation)) {
+  if (!window.localStorage.weatherLocation) {
     $('section').html('We have no idea where you are! You haven\'t set a location yet. Go to the <a href="settings.html" title="Go to settings">settings page</a> and put it in.');
     return;
   }
 
-  updateColor();
-  updateBadge();
   loadWeather();
 };
 
