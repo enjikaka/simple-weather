@@ -1,3 +1,6 @@
+/* globals $, chrome */
+/* exported updateBadge, isEmpty, noCity */
+
 function updateBadge () {
   let city = window.localStorage.weatherLocation;
   if (isEmpty(city)) return;
@@ -16,28 +19,34 @@ function updateBadge () {
 
   setTimeout(updateBadge, 300000);
 }
+
 function isEmpty (s) {
-  if (s == null || s == '') { return true; }
+  if (s == null || s === '') { return true; }
   s = s.replace(/^\s+|\s+$/, '');
-  if (s.length == 0) { return true; }
+  if (s.length === 0) { return true; }
   return false;
 }
+
 function noCity () {
-  /*var notification = webkitNotifications.createNotification('http://apps.enji.se/weather/48.png', 'There is a problem...', 'We couldn\'t find the city you entered. Go to the settings page and try to add more information to your location (if you have "City" try "City, Country") or try another location near you.');
-  notification.show();*/
+  var notification = webkitNotifications.createNotification('http://apps.enji.se/weather/48.png', 'There is a problem...', 'We couldn\'t find the city you entered. Go to the settings page and try to add more information to your location (if you have "City" try "City, Country") or try another location near you.');
+  notification.show();
 }
+
 function updateColor () {
   var c = window.localStorage.weatherTheme;
   if (isEmpty(c)) { c = '11115C'; }
   $('body').css('color', '#' + c);
   $('*').css('border-color', '#' + c);
 }
+
 function fcap (s) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
+
 function ctof (s) {
   return Math.round(parseInt(s) * 1.8 + 32);
 }
+
 function getIcon (i) {
   switch (i) {
     case 'mostly_cloudy':
