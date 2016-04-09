@@ -1,4 +1,4 @@
-/* globals updateColor, updateBadge, isEmpty, chrome, noCity, $, getIcon */
+/* globals updateColor, updateBadge, isEmpty, ctof, $, getIcon */
 
 window.onload = function () {
   if (isEmpty(window.localStorage.weatherLocation)) {
