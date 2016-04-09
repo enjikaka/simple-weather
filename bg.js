@@ -1,6 +1,7 @@
 function updateBadge () {
-  var city = localStorage.weatherLocation;
-  if (isEmpty(city)) { return; }
+  let city = window.localStorage.weatherLocation;
+  if (isEmpty(city)) return;
+
   $.ajax({
     type: 'GET',
     url: 'http://www.google.com/ig/api?weather=' + encodeURIComponent(city),
@@ -12,7 +13,8 @@ function updateBadge () {
       });
     }
   });
-  setTimeout('updateBadge()', 300000);
+
+  setTimeout(updateBadge, 300000);
 }
 function isEmpty (s) {
   if (s == null || s == '') { return true; }
@@ -21,11 +23,11 @@ function isEmpty (s) {
   return false;
 }
 function noCity () {
-  var notification = webkitNotifications.createNotification('http://apps.enji.se/weather/48.png', 'There is a problem...', 'We couldn\'t find the city you entered. Go to the settings page and try to add more information to your location (if you have "City" try "City, Country") or try another location near you.');
-  notification.show();
+  /*var notification = webkitNotifications.createNotification('http://apps.enji.se/weather/48.png', 'There is a problem...', 'We couldn\'t find the city you entered. Go to the settings page and try to add more information to your location (if you have "City" try "City, Country") or try another location near you.');
+  notification.show();*/
 }
 function updateColor () {
-  var c = localStorage.weatherTheme;
+  var c = window.localStorage.weatherTheme;
   if (isEmpty(c)) { c = '11115C'; }
   $('body').css('color', '#' + c);
   $('*').css('border-color', '#' + c);
