@@ -2,18 +2,20 @@
 /* exported updateBadge, isEmpty, noCity */
 
 function updateBadge () {
-  let city = window.localStorage.weatherLocation;
-  if (isEmpty(city)) return;
+  let location = window.localStorage.weatherLocation;
+  if (!location) return;
+
+  location = location.split(',');
 
   $.ajax({
     type: 'GET',
-    url: 'http://www.google.com/ig/api?weather=' + encodeURIComponent(city),
+    url: `http://api.met.no/weatherapi/locationforecast/1.9/?lat=${location[0]};lon=${location[1]}`,
     dataType: 'xml',
-    success: function (xml) {
-      $(this).find('condition').each(function () {
+    success: function () {
+      /*$(this).find('location').each(function () {
         $('#weather').attr('title', $(this).attr('data'));
         chrome.browserAction.setTitle({title: $(this).attr('data') + ' - ' + city});
-      });
+      });*/
     }
   });
 
@@ -33,6 +35,7 @@ function noCity () {
 }
 
 function updateColor () {
+  return;
   var c = window.localStorage.weatherTheme;
   if (isEmpty(c)) { c = '11115C'; }
   $('body').css('color', '#' + c);
@@ -49,73 +52,57 @@ function ctof (s) {
 
 function getIcon (i) {
   switch (i) {
-    case 'mostly_cloudy':
+    case 'LightCloud':
+    case 'PartlyCloud':
+    case 'LightCloud':
       i = 'H';
       break;
-    case 'partly_cloudy':
-      i = 'H';
-      break;
-    case 'mostly_sunny':
-      i = 'H';
-      break;
-    case 'cloudy':
+    case 'Cloud':
       i = 'N';
       break;
-    case 'chance_of_snow':
+    case 'LightSnowSun':
+    case 'SnowSun':
+    case 'HeavysnowSun':
       i = 'V';
       break;
-    case 'snow':
+    case 'Snow':
+    case 'LightSnow':
+    case 'HeavySnow':
       i = 'W';
       break;
-    case 'flurries':
+    case 'LightSleet':
       i = 'U';
       break;
-    case 'sleet':
+    case 'LightSleet':
+    case 'Sleet':
+    case 'HeavySleet':
       i = 'X';
       break;
-    case 'chance_of_rain':
+    case 'LightRainSun':
+    case 'LightRainThunderSun':
       i = 'Q';
       break;
-    case 'chance_of_storm':
-      i = 'Q';
-      break;
-    case 'mist':
-      i = 'R';
-      break;
-    case 'showers':
-      i = 'R';
-      break;
-    case 'rain':
-      i = 'R';
-      break;
+    case 'LightRain':
+    case 'Rain':
     case 'storm':
       i = 'R';
       break;
     case 'rain_snow':
       i = 'X';
       break;
-    case 'thunderstorm':
+    case 'RainThunder':
       i = '0';
       break;
-    case 'fog':
-      i = 'M';
-      break;
-    case 'foggy':
-      i = 'M';
-      break;
+    case 'Fog':
     case 'smoke':
-      i = 'M';
-      break;
     case 'hazy':
-      i = 'M';
-      break;
     case 'dusty':
       i = 'M';
       break;
     case 'icy':
       i = 'V';
       break;
-    case 'sunny':
+    case 'Sun':
       i = 'B';
       break;
   }

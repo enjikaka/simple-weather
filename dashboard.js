@@ -20,7 +20,50 @@ function loadWeather () {
   var city = window.localStorage.weatherLocation;
   var tv = window.localStorage.weatherTempVer;
 
+  let location = window.localStorage.weatherLocation;
+  if (!location) return;
+
+  location = location.split(',');
+
   $.ajax({
+    type: 'GET',
+    url: `http://api.met.no/weatherapi/locationforecast/1.9/?lat=${location[0]};lon=${location[1]}`,
+    dataType: 'xml',
+    success: function (xml) {
+      console.debug(xml);
+      $(xml).find('[datatype="forecast"]').each(function (index) {
+        let from = $(this).attr('from');
+
+        if (index === 0 || !$('.current').attr('data-forecast')) {
+          $('.current').attr('data-forecast', from);
+        }
+
+        $(this).find('temperature').each(function () {
+          var temp = $(this).attr('value');
+
+          if (tv === 'f') {
+            temp = ctof(temp);
+          }
+
+          $('.current .temp').html(temp + '°' + tv.toUpperCase());
+        });
+
+        $(this).find('symbol').each(function (i, e) {
+          if ($('.current').attr('data-forecast') !== from) return;
+
+          console.debug(e);
+          console.debug($('.current').attr('data-forecast'), from);
+
+          var icon = $(this).attr('id');
+          $('.current .icon').html(getIcon(icon));
+
+          console.debug(icon, getIcon(icon));
+        });
+      });
+    }
+  });
+
+  /*$.ajax({
     type: 'GET',
     url: 'http://www.google.com/ig/api?weather=' + encodeURIComponent(city),
     dataType: 'xml',
@@ -32,15 +75,6 @@ function loadWeather () {
       $(xml).find('current_conditions').each(function () {
         $(this).find('condition').each(function () {
           $('.current .info').html($(this).attr('data'));
-        });
-        $(this).find('temp_c').each(function () {
-          var temp = $(this).attr('data');
-
-          if (tv === 'f') {
-            temp = ctof(temp);
-          }
-
-          $('.current .temp').html(temp + '°' + tv.toUpperCase());
         });
 
         $(this).find('icon').each(function () {
@@ -97,7 +131,7 @@ function loadWeather () {
       $('#city').html(city);
       $('#current').html('Now');
     }
-  });
+  });*/
 }
 
 // Copyright © 2012 Jeremy Karlsson hello@enji.se

@@ -3,7 +3,7 @@
 window.onload = function () {
   if (isEmpty(window.localStorage.weatherLocation)) {
     window.close();
-    window.open('settings.html');
+    window.open('s.html');
   }
   loadWeather();
   updateColor();
@@ -18,42 +18,43 @@ function loadWeather () {
   var city = window.localStorage.weatherLocation;
   var tv = window.localStorage.weatherTempVer;
 
+  let location = window.localStorage.weatherLocation;
+  if (!location) return;
+
+  location = location.split(',');
+
   $.ajax({
     type: 'GET',
-    url: 'http://www.google.com/ig/api?weather=' + encodeURIComponent(city),
+    url: `http://api.met.no/weatherapi/locationforecast/1.9/?lat=${location[0]};lon=${location[1]}`,
     dataType: 'xml',
     success: function (xml) {
-      $(xml).find('problem_cause').each(function () {
-        noCity();
+      console.debug(xml);
+      $(xml).find('[datatype="forecast"]').each(function (index) {
+        let from = $(this).attr('from');
 
-        return;
-      });
+        if (index === 0 || !$('#content').attr('data-forecast')) {
+          $('#content').attr('data-forecast', from);
+        }
 
-      $(xml).find('current_conditions').each(function () {
-        $(this).find('condition').each(function () {
-          $('#weather').attr('title', $(this).attr('data'));
-          chrome.browserAction.setTitle({title: $(this).attr('data') + ' - ' + city});
+        $(this).find('temperature').each(function () {
+          var temp = $(this).attr('value');
+
+          if (tv === 'f') {
+            temp = ctof(temp);
+          }
+
+          $('#temp').html(temp + '°' + tv.toUpperCase());
         });
 
-        $(this).find('temp_' + tv).each(function () {
-          $('#temp').html($(this).attr('data') + '°' + tv.toUpperCase());
-        });
+        $(this).find('symbol').each(function () {
+          if ($('#content').attr('data-forecast') !== from) return;
 
-        $(this).find('icon').each(function () {
-          var icon = $(this).attr('data');
-
-          icon = icon.split('/');
-          icon = icon[icon.length - 1];
-          icon = icon.split('.');
-          icon = icon[0];
-          icon = icon.toLowerCase();
-
+          var icon = $(this).attr('id');
           $('#weather').html(getIcon(icon));
+
+          console.debug(icon, getIcon(icon));
         });
       });
-
-      $('#city').html(city);
-      updateBadge();
     }
   });
 }
