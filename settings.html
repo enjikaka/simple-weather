@@ -5,36 +5,34 @@
     <link rel="stylesheet" href="settings.css">
   </head>
   <body id="settings">
-    <header>
-      <h1 class="title">Weather Settings</h1>
-
-      <aside>
-        <i id="opt" title="Back to the Weather" class="icon">B</i>
-      </aside>
-    </header>
-  	<main>
-  		<span>Location: </span>
-      <input type="text" name="location" id="my_loc" placeholder="Stockholm, Sweden">
-      <button id="find-me-button">Find me</button>
-      <br>
-  		<img id="my_map"><br>
-  		<span>Temperature scale: </span>
-  		<select id="my_temp">
-        <option value="c">C</option>
-        <option value="f">F</option>
-      </select>
-      <br>
-  		<span>Color: #</span>
-      <input type="text" id="my_theme" name="color"  placeholder="11115C" value="11115C">
-      <br >
-  		<button id="save">Save Settings</button><button id="reset">Reset Settings</button>
-      <br>
-  		<footer>
-        Weather data from <a href="http://www.yr.no/">YR.no</a><br>
-        Copyright © 2016 Vufuzi<br>
-        <a href="https://vufuzi.se">vufuzi.se</a> | <a href="mailto:info@vufuzi.se">info@vufuzi.se</a>
+    <div class="site">
+      <header>
+        <h1 class="title">Weather Settings</h1>
+        <aside>
+          <i id="opt" title="Back to the Weather" class="icon">B</i>
+        </aside>
+      </header>
+    	<main>
+    		<span>Location: </span>
+        <input type="text" name="location" id="my_loc" placeholder="Stockholm, Sweden">
+        <button id="find-me-button">Find me</button>
+        <br>
+    		<img id="my_map"><br>
+    		<span>Temperature scale: </span>
+    		<select id="my_temp">
+          <option value="c">C</option>
+          <option value="f">F</option>
+        </select>
+        <br>
+    		<span>Color: #</span>
+        <input type="text" id="my_theme" name="color"  placeholder="11115C" value="11115C">
+        <br >
+    		<button id="save">Save Settings</button><button id="reset">Reset Settings</button>
+    	</main>
+      <footer>
+        Weather data from <a href="http://www.yr.no/">YR.no</a> | Copyright © 2016 <a href="https://vufuzi.se">Vufuzi</a>
       </footer>
-  	</main>
+    </div>
 
     <script src="js/zepto.min.js"></script>
     <script src="bg.js"></script>

@@ -1,5 +1,15 @@
 @import 'base.css';
 
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  & main {
+    flex: 1;
+  }
+}
+
 header {
   display: flex;
   padding: 1.5em 2em;
@@ -43,14 +53,9 @@ main {
 }
 
 footer {
-  font-size: 16px;
-  font-weight: bold;
-
-  padding: 1em 0;
-
+  font-size: 10pt;
+  margin: 1rem auto;
   text-align: center;
-  letter-spacing: 1px;
-
   color: #ccc;
 }
 
@@ -62,6 +67,7 @@ footer a {
 
 footer a:hover {
   color: #888;
+  text-decoration: underline;
 }
 
 /* Copyright © 2012 Jeremy Karlsson hello@enji.se */
