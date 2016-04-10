@@ -16,7 +16,7 @@ window.onclick = function () {
 };
 
 function loadWeather () {
-  let tv = window.localStorage.weatherTempVer;
+  let tv = window.localStorage.weatherTempVer || 'c';
   let location = window.localStorage.weatherLocation;
 
   if (!location) return;
