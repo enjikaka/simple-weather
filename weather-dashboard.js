@@ -42,7 +42,7 @@ function loadWeather () {
             temp = ctof(temp);
           }
 
-          $('.current .temp').html(temp + '°' + tv.toUpperCase());
+          $('.current .temperature').html(temp + '°' + tv.toUpperCase());
         });
 
         $(this).find('symbol').each(function (i, e) {

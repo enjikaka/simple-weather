@@ -1,5 +1,10 @@
 @import 'dashboard.css';
 
+.forecasts {
+  display: flex;
+  margin: 2rem auto;
+}
+
 .forecasts article {
   font-family: 'Interstate';
 
@@ -12,34 +17,23 @@
   vertical-align: top;
 
   border-right: 2px solid;
-}
 
-.forecasts article:last-child {
-  border: 0;
-}
+  margin: 0 auto;
 
-.forecasts article .info {
-  font-size: 20px;
-}
+  &:last-child {
+    border: 0;
+  }
 
-.forecasts article h3 {
-  font-size: 42px;
+  & .icon {
+    font-family: 'Meteocons';
+    font-size: 175px;
 
-  margin: 0;
-  padding: 0;
+    display: block;
+  }
 
-  text-align: left;
-}
+  & .temperature {
+    font-size: 56px;
 
-.forecasts article .icon {
-  font-family: 'Meteocons';
-  font-size: 175px;
-
-  display: block;
-}
-
-.forecasts article .temp {
-  font-size: 56px;
-
-  display: block;
+    display: block;
+  }
 }
