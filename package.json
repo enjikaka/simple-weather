@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "Simple Weather browser extension",
   "scripts": {
-    "css": "./node_modules/.bin/postcss --config postcss.config.json",
+    "css-settings": "./node_modules/.bin/postcss --config postcss.settings.config.json",
+    "css-popup": "./node_modules/.bin/postcss --config postcss.popup.config.json",
+    "css-weather-dashboard": "./node_modules/.bin/postcss --config postcss.weather-dashboard.config.json",
+    "css": "npm run css-weather-dashboard && npm run css-popup && npm run css-settings",
     "test": "semistandard",
     "start": "node index",
     "build": "npm run css"

@@ -12,7 +12,7 @@ window.onload = function () {
 };
 
 window.onclick = function () {
-  window.open('dashboard.html');
+  window.open('weather-dashboard.html');
 };
 
 function loadWeather () {

@@ -1,0 +1,50 @@
+@import 'dashboard.css';
+
+#settings #my_map {
+  margin: 8px;
+
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.3);
+}
+
+#settings .main span {
+  font-size: 22px;
+
+  padding: .1em .3em;
+}
+
+#settings input[type='text'],
+select {
+  font-size: 16px;
+
+  margin: 5px 0;
+  padding: 5px 10px;
+
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+#settings input[type='text'] {
+  width: 300px
+}
+
+#settings button {
+  font-size: 16px;
+
+  margin: 12px 6px;
+  padding: 4px 10px;
+
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  background: linear-gradient(#fff,#eee);
+}
+
+#settings button:hover {
+  background: linear-gradient(#fff,#f4f4f4);
+}
+
+#settings h1.ms {
+  margin-top: -20px;
+  margin-bottom: -18px;
+  padding: 0;
+}

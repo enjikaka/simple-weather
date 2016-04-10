@@ -3,15 +3,18 @@
 	<head><!-- Copyright © 2012 Jeremy Karlsson me@enji.se -->
 		<title>Weather</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="css/dashboard.css">
+		<link rel="stylesheet" href="weather-dashboard.css">
 	</head>
 	<body>
 		<header>
-			<span id="opt" title="Settings" class="right">G</span>
-			<h2 id="city"></h2>
-			<h1>Weather</h1>
+			<h1 class="title">Weather</h1>
+
+      <aside>
+        <h2 id="city"></h2>
+        <i id="opt" title="Settings" class="icon">G</i>
+      </aside>
 		</header>
-		<div class="main">
+		<main>
 			<section class="forecasts">
 				<article class="current">
 					<h3 id="current"></h3>
@@ -25,10 +28,10 @@
         Copyright © 2016 Vufuzi<br>
         <a href="https://vufuzi.se">vufuzi.se</a> | <a href="mailto:info@vufuzi.se">info@vufuzi.se</a>
       </footer>
-		</div>
+		</main>
 
     <script src="js/zepto.min.js"></script>
     <script src="bg.js"></script>
-    <script src="dashboard.js"></script>
+    <script src="weather-dashboard.js"></script>
 	</body><!-- Copyright © 2012 Jeremy Karlsson me@enji.se -->
 </html>

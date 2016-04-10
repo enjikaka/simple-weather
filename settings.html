@@ -2,14 +2,17 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="settings.css">
   </head>
   <body id="settings">
-  	<header>
-  		<span id="opt" title="Back to the Weather" class="right">B</span>
-  		<h1 id="title">Weather Settings</h1>
-  	</header>
-  	<div class="main">
+    <header>
+      <h1 class="title">Weather Settings</h1>
+
+      <aside>
+        <i id="opt" title="Back to the Weather" class="icon">B</i>
+      </aside>
+    </header>
+  	<main>
   		<span>Location: </span>
       <input type="text" name="location" id="my_loc" placeholder="Stockholm, Sweden">
       <button id="find-me-button">Find me</button>
@@ -31,7 +34,7 @@
         Copyright © 2016 Vufuzi<br>
         <a href="https://vufuzi.se">vufuzi.se</a> | <a href="mailto:info@vufuzi.se">info@vufuzi.se</a>
       </footer>
-  	</div>
+  	</main>
 
     <script src="js/zepto.min.js"></script>
     <script src="bg.js"></script>

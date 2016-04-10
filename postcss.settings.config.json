@@ -5,6 +5,6 @@
     "cssnano",
     "postcss-reporter"
   ],
-  "input": "css/main.css",
-  "output": "style.css"
+  "input": "css/settings.css",
+  "output": "settings.css"
 }

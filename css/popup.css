@@ -4,11 +4,12 @@ body {
   font-family: 'Interstate';
 }
 
-#content {
+.forecast {
   width: 150px;
+  margin: 1rem;
 }
 
-#content #weather {
+.icon {
   font-family: 'Meteocons';
   font-size: 128px;
 
@@ -17,13 +18,13 @@ body {
   text-align: center;
 }
 
-#content #temp {
+.temperature {
   font-size: 42px;
 
   text-align: center;
 }
 
-#content #error {
+.error {
   font-size: 16px;
 
   padding-bottom: 8px;
@@ -31,7 +32,7 @@ body {
   text-align: center;
 }
 
-#content #city {
+.location {
   font-size: 10px;
 
   display: none;

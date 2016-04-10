@@ -1,0 +1,45 @@
+@import 'dashboard.css';
+
+.forecasts article {
+  font-family: 'Interstate';
+
+  display: inline-block;
+
+  width: 200px;
+  padding: .3em 1.2em;
+
+  text-align: center;
+  vertical-align: top;
+
+  border-right: 2px solid;
+}
+
+.forecasts article:last-child {
+  border: 0;
+}
+
+.forecasts article .info {
+  font-size: 20px;
+}
+
+.forecasts article h3 {
+  font-size: 42px;
+
+  margin: 0;
+  padding: 0;
+
+  text-align: left;
+}
+
+.forecasts article .icon {
+  font-family: 'Meteocons';
+  font-size: 175px;
+
+  display: block;
+}
+
+.forecasts article .temp {
+  font-size: 56px;
+
+  display: block;
+}

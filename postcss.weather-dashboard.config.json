@@ -1,0 +1,10 @@
+{
+  "use": [
+    "postcss-import",
+    "postcss-cssnext",
+    "cssnano",
+    "postcss-reporter"
+  ],
+  "input": "css/weather-dashboard.css",
+  "output": "weather-dashboard.css"
+}

@@ -47,7 +47,7 @@ window.onclick = function (e) {
   } else if (e.target.id === 'my_map') {
     window.open('http://maps.google.com/maps?f=q&q=' + window.localStorage.weatherLocation);
   } else if (e.target.id === 'opt') {
-    document.location.href = 'dashboard.html';
+    document.location.href = 'weather-dashboard.html';
   } else if (e.target.id === 'reset') {
     window.localStorage.weatherLocation = '';
     window.localStorage.weatherTempVer = 'c';
