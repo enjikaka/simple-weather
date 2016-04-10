@@ -1,6 +1,6 @@
 {
   "name": "simple-weather",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Simple Weather browser extension",
   "scripts": {
     "css-settings": "./node_modules/.bin/postcss --config postcss.settings.config.json",
